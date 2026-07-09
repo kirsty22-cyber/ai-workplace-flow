@@ -92,7 +92,7 @@ function ChatPage() {
         icon={<MessageCircle className="h-5 w-5" />}
         title="AI Chatbot"
         description="Your interactive workplace assistant. Ask, brainstorm, or draft anything."
-        action={
+        actions={
           <Button variant="outline" size="sm" onClick={newConversation}>
             <RefreshCw className="mr-1 h-4 w-4" /> New conversation
           </Button>
@@ -129,11 +129,10 @@ function ChatPage() {
               messages.map((m: UIMessage) => (
                 <Message key={m.id} from={m.role}>
                   <MessageContent
-                    variant={m.role === "user" ? "contained" : "flat"}
                     className={
                       m.role === "user"
                         ? "bg-primary text-primary-foreground"
-                        : undefined
+                        : "bg-transparent p-0 text-foreground"
                     }
                   >
                     {m.parts.map((part, i) => {
