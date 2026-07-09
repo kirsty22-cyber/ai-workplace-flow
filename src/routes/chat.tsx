@@ -154,7 +154,7 @@ function ChatPage() {
 
             {status === "submitted" && (
               <Message from="assistant">
-                <MessageContent variant="flat">
+                <MessageContent className="bg-transparent p-0 text-muted-foreground">
                   <Shimmer>Thinking…</Shimmer>
                 </MessageContent>
               </Message>
