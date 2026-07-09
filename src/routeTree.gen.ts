@@ -9,11 +9,47 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SummarizeRouteImport } from './routes/summarize'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as PromptsRouteImport } from './routes/prompts'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as EmailRouteImport } from './routes/email'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiSummarizeRouteImport } from './routes/api/summarize'
 import { Route as ApiPlannerRouteImport } from './routes/api/planner'
 import { Route as ApiEmailRouteImport } from './routes/api/email'
 
+const SummarizeRoute = SummarizeRouteImport.update({
+  id: '/summarize',
+  path: '/summarize',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromptsRoute = PromptsRouteImport.update({
+  id: '/prompts',
+  path: '/prompts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +73,24 @@ const ApiEmailRoute = ApiEmailRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/email': typeof EmailRoute
+  '/help': typeof HelpRoute
+  '/planner': typeof PlannerRoute
+  '/prompts': typeof PromptsRoute
+  '/settings': typeof SettingsRoute
+  '/summarize': typeof SummarizeRoute
   '/api/email': typeof ApiEmailRoute
   '/api/planner': typeof ApiPlannerRoute
   '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/email': typeof EmailRoute
+  '/help': typeof HelpRoute
+  '/planner': typeof PlannerRoute
+  '/prompts': typeof PromptsRoute
+  '/settings': typeof SettingsRoute
+  '/summarize': typeof SummarizeRoute
   '/api/email': typeof ApiEmailRoute
   '/api/planner': typeof ApiPlannerRoute
   '/api/summarize': typeof ApiSummarizeRoute
@@ -50,20 +98,63 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/email': typeof EmailRoute
+  '/help': typeof HelpRoute
+  '/planner': typeof PlannerRoute
+  '/prompts': typeof PromptsRoute
+  '/settings': typeof SettingsRoute
+  '/summarize': typeof SummarizeRoute
   '/api/email': typeof ApiEmailRoute
   '/api/planner': typeof ApiPlannerRoute
   '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/email' | '/api/planner' | '/api/summarize'
+  fullPaths:
+    | '/'
+    | '/email'
+    | '/help'
+    | '/planner'
+    | '/prompts'
+    | '/settings'
+    | '/summarize'
+    | '/api/email'
+    | '/api/planner'
+    | '/api/summarize'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/email' | '/api/planner' | '/api/summarize'
-  id: '__root__' | '/' | '/api/email' | '/api/planner' | '/api/summarize'
+  to:
+    | '/'
+    | '/email'
+    | '/help'
+    | '/planner'
+    | '/prompts'
+    | '/settings'
+    | '/summarize'
+    | '/api/email'
+    | '/api/planner'
+    | '/api/summarize'
+  id:
+    | '__root__'
+    | '/'
+    | '/email'
+    | '/help'
+    | '/planner'
+    | '/prompts'
+    | '/settings'
+    | '/summarize'
+    | '/api/email'
+    | '/api/planner'
+    | '/api/summarize'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EmailRoute: typeof EmailRoute
+  HelpRoute: typeof HelpRoute
+  PlannerRoute: typeof PlannerRoute
+  PromptsRoute: typeof PromptsRoute
+  SettingsRoute: typeof SettingsRoute
+  SummarizeRoute: typeof SummarizeRoute
   ApiEmailRoute: typeof ApiEmailRoute
   ApiPlannerRoute: typeof ApiPlannerRoute
   ApiSummarizeRoute: typeof ApiSummarizeRoute
@@ -71,6 +162,48 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/summarize': {
+      id: '/summarize'
+      path: '/summarize'
+      fullPath: '/summarize'
+      preLoaderRoute: typeof SummarizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prompts': {
+      id: '/prompts'
+      path: '/prompts'
+      fullPath: '/prompts'
+      preLoaderRoute: typeof PromptsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +237,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EmailRoute: EmailRoute,
+  HelpRoute: HelpRoute,
+  PlannerRoute: PlannerRoute,
+  PromptsRoute: PromptsRoute,
+  SettingsRoute: SettingsRoute,
+  SummarizeRoute: SummarizeRoute,
   ApiEmailRoute: ApiEmailRoute,
   ApiPlannerRoute: ApiPlannerRoute,
   ApiSummarizeRoute: ApiSummarizeRoute,
