@@ -97,6 +97,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "WorkAI — AI Workplace Productivity Assistant" },
+      { name: "twitter:description", content: "Draft emails, summarize meetings, and plan your day with AI. Private, stateless, no login required." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/aaa84317-45db-4a14-aa86-cea8f07aa1f6/id-preview-6d8ee430--e54e82bd-665a-45f6-894d-af23c3e3de54.lovable.app-1783628533229.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/aaa84317-45db-4a14-aa86-cea8f07aa1f6/id-preview-6d8ee430--e54e82bd-665a-45f6-894d-af23c3e3de54.lovable.app-1783628533229.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
