@@ -9,22 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SummarizeRouteImport } from './routes/summarize'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as PromptsRouteImport } from './routes/prompts'
 import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as EmailRouteImport } from './routes/email'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiSummarizeRouteImport } from './routes/api/summarize'
 import { Route as ApiPlannerRouteImport } from './routes/api/planner'
 import { Route as ApiEmailRouteImport } from './routes/api/email'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 
-const SummarizeRoute = SummarizeRouteImport.update({
-  id: '/summarize',
-  path: '/summarize',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -50,14 +45,14 @@ const EmailRoute = EmailRouteImport.update({
   path: '/email',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiSummarizeRoute = ApiSummarizeRouteImport.update({
-  id: '/api/summarize',
-  path: '/api/summarize',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPlannerRoute = ApiPlannerRouteImport.update({
@@ -70,105 +65,103 @@ const ApiEmailRoute = ApiEmailRouteImport.update({
   path: '/api/email',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
   '/help': typeof HelpRoute
   '/planner': typeof PlannerRoute
   '/prompts': typeof PromptsRoute
   '/settings': typeof SettingsRoute
-  '/summarize': typeof SummarizeRoute
+  '/api/chat': typeof ApiChatRoute
   '/api/email': typeof ApiEmailRoute
   '/api/planner': typeof ApiPlannerRoute
-  '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
   '/help': typeof HelpRoute
   '/planner': typeof PlannerRoute
   '/prompts': typeof PromptsRoute
   '/settings': typeof SettingsRoute
-  '/summarize': typeof SummarizeRoute
+  '/api/chat': typeof ApiChatRoute
   '/api/email': typeof ApiEmailRoute
   '/api/planner': typeof ApiPlannerRoute
-  '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
   '/help': typeof HelpRoute
   '/planner': typeof PlannerRoute
   '/prompts': typeof PromptsRoute
   '/settings': typeof SettingsRoute
-  '/summarize': typeof SummarizeRoute
+  '/api/chat': typeof ApiChatRoute
   '/api/email': typeof ApiEmailRoute
   '/api/planner': typeof ApiPlannerRoute
-  '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/chat'
     | '/email'
     | '/help'
     | '/planner'
     | '/prompts'
     | '/settings'
-    | '/summarize'
+    | '/api/chat'
     | '/api/email'
     | '/api/planner'
-    | '/api/summarize'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/chat'
     | '/email'
     | '/help'
     | '/planner'
     | '/prompts'
     | '/settings'
-    | '/summarize'
+    | '/api/chat'
     | '/api/email'
     | '/api/planner'
-    | '/api/summarize'
   id:
     | '__root__'
     | '/'
+    | '/chat'
     | '/email'
     | '/help'
     | '/planner'
     | '/prompts'
     | '/settings'
-    | '/summarize'
+    | '/api/chat'
     | '/api/email'
     | '/api/planner'
-    | '/api/summarize'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
   EmailRoute: typeof EmailRoute
   HelpRoute: typeof HelpRoute
   PlannerRoute: typeof PlannerRoute
   PromptsRoute: typeof PromptsRoute
   SettingsRoute: typeof SettingsRoute
-  SummarizeRoute: typeof SummarizeRoute
+  ApiChatRoute: typeof ApiChatRoute
   ApiEmailRoute: typeof ApiEmailRoute
   ApiPlannerRoute: typeof ApiPlannerRoute
-  ApiSummarizeRoute: typeof ApiSummarizeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/summarize': {
-      id: '/summarize'
-      path: '/summarize'
-      fullPath: '/summarize'
-      preLoaderRoute: typeof SummarizeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -204,18 +197,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmailRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/summarize': {
-      id: '/api/summarize'
-      path: '/api/summarize'
-      fullPath: '/api/summarize'
-      preLoaderRoute: typeof ApiSummarizeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/planner': {
@@ -232,20 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiEmailRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
   EmailRoute: EmailRoute,
   HelpRoute: HelpRoute,
   PlannerRoute: PlannerRoute,
   PromptsRoute: PromptsRoute,
   SettingsRoute: SettingsRoute,
-  SummarizeRoute: SummarizeRoute,
+  ApiChatRoute: ApiChatRoute,
   ApiEmailRoute: ApiEmailRoute,
   ApiPlannerRoute: ApiPlannerRoute,
-  ApiSummarizeRoute: ApiSummarizeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
