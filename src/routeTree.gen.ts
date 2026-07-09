@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiSummarizeRouteImport } from './routes/api/summarize'
+import { Route as ApiPlannerRouteImport } from './routes/api/planner'
+import { Route as ApiEmailRouteImport } from './routes/api/email'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSummarizeRoute = ApiSummarizeRouteImport.update({
+  id: '/api/summarize',
+  path: '/api/summarize',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPlannerRoute = ApiPlannerRouteImport.update({
+  id: '/api/planner',
+  path: '/api/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiEmailRoute = ApiEmailRouteImport.update({
+  id: '/api/email',
+  path: '/api/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/email': typeof ApiEmailRoute
+  '/api/planner': typeof ApiPlannerRoute
+  '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/email': typeof ApiEmailRoute
+  '/api/planner': typeof ApiPlannerRoute
+  '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/email': typeof ApiEmailRoute
+  '/api/planner': typeof ApiPlannerRoute
+  '/api/summarize': typeof ApiSummarizeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/email' | '/api/planner' | '/api/summarize'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/email' | '/api/planner' | '/api/summarize'
+  id: '__root__' | '/' | '/api/email' | '/api/planner' | '/api/summarize'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiEmailRoute: typeof ApiEmailRoute
+  ApiPlannerRoute: typeof ApiPlannerRoute
+  ApiSummarizeRoute: typeof ApiSummarizeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/summarize': {
+      id: '/api/summarize'
+      path: '/api/summarize'
+      fullPath: '/api/summarize'
+      preLoaderRoute: typeof ApiSummarizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/planner': {
+      id: '/api/planner'
+      path: '/api/planner'
+      fullPath: '/api/planner'
+      preLoaderRoute: typeof ApiPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/email': {
+      id: '/api/email'
+      path: '/api/email'
+      fullPath: '/api/email'
+      preLoaderRoute: typeof ApiEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiEmailRoute: ApiEmailRoute,
+  ApiPlannerRoute: ApiPlannerRoute,
+  ApiSummarizeRoute: ApiSummarizeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
