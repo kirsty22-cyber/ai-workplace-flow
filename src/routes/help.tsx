@@ -27,8 +27,8 @@ const faqs = [
     a: "You provide the recipient, subject, purpose, key points, tone, and length. WorkAI drafts a complete email you can edit, copy, or download. Nothing is saved.",
   },
   {
-    q: "How accurate are AI-generated summaries?",
-    a: "Summaries are usually a strong starting point but may miss nuance or misattribute action items. Always review before sharing.",
+    q: "How does the AI Chatbot work?",
+    a: "Type any workplace question or task into the chat and the assistant responds in real time. Conversations are session-only — refreshing the page clears everything.",
   },
   {
     q: "Can I edit AI-generated content?",
