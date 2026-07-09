@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Mail,
-  FileText,
+  MessageCircle,
   CalendarClock,
   ArrowRight,
   TrendingUp,
@@ -27,11 +27,11 @@ const features = [
     cta: "Open Generator",
   },
   {
-    to: "/summarize" as const,
-    icon: FileText,
-    title: "Meeting Notes Summarizer",
-    description: "Turn long notes into concise, actionable summaries.",
-    cta: "Summarize Notes",
+    to: "/chat" as const,
+    icon: MessageCircle,
+    title: "AI Chatbot",
+    description: "Interactive assistant for drafts, ideas, and quick answers.",
+    cta: "Start Chatting",
   },
   {
     to: "/planner" as const,
@@ -46,7 +46,7 @@ function Dashboard() {
   const stats = useSessionStats();
   const cards = [
     { label: "Emails Generated", value: stats.emails, icon: Mail },
-    { label: "Meetings Summarized", value: stats.meetings, icon: FileText },
+    { label: "Chat Messages", value: stats.chats, icon: MessageCircle },
     { label: "Plans Created", value: stats.plans, icon: CalendarClock },
     { label: "Productivity Score", value: `${stats.score}%`, icon: TrendingUp },
   ];

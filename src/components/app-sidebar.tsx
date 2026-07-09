@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
   Mail,
-  FileText,
+  MessageCircle,
   CalendarClock,
   BookMarked,
   Settings,
@@ -25,7 +25,7 @@ import {
 const mainItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Smart Email Generator", url: "/email", icon: Mail },
-  { title: "Meeting Notes Summarizer", url: "/summarize", icon: FileText },
+  { title: "AI Chatbot", url: "/chat", icon: MessageCircle },
   { title: "AI Task Planner", url: "/planner", icon: CalendarClock },
   { title: "Prompt Library", url: "/prompts", icon: BookMarked },
 ] as const;
